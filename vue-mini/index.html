@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>插值表达式</h1>
+        <h3>{{ msg }}</h3>
+        <h3>{{ count }}</h3>
+        <h1>v-text</h1>
+        <h3 v-text="msg"></h3>
+        <h3 v-text="count"></h3>
+        <h1>v-html</h1>
+        <h3 v-html="html"></h3>
+        <h1>v-modal</h1>
+        <input type="text" v-modal="msg" />
+        <input type="text" v-modal="count" />
+        <input type="text" v-modal="html" />
+        <h1>v-on:click--alert(hello-vue)</h1>
+        <h3 v-on:click="handleClick">点我有惊喜</h3>
+        <button v-on:mouseenter="handleMouseEnter" v-on:mouseleave="handleMouseLeave">移入变色</button>
+    </div>
+    <script src="./src/dep.js"></script>
+    <script src="./src/watcher.js"></script>
+    <script src="./src/compiler.js"></script>
+    <script src="./src/observer.js" ></script>
+    <script src="./src/vue.js" ></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue-mini',
+                count: 100,
+                html: '<em>哈哈哈<em>',
+                person: {
+                    name: 'ting'
+                }
+            },
+            // 不用响应式， 
+            methods:{
+                handleClick: () =>{
+                    alert('hello-mini-vue')
+                },
+                handleMouseEnter: (e) =>{
+                    e.target.style.color = 'red'
+                },
+                handleMouseLeave: (e) =>{
+                    e.target.style.color = 'green'
+                }
+            }
+        })
+        // vm.$data.msg = {test: 'ttt....'}
+    </script>
+</body>
+</html>
